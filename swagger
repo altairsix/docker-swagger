@@ -1,0 +1,17 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+
+	index index.html;
+
+	location / {
+		root /public/swagger;
+		try_files $uri $uri/ =404;
+	}
+
+	location /swagger/ {
+		root /public;
+		try_files $uri $uri/ =404;
+	}
+}
+
